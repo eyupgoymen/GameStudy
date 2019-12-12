@@ -24,6 +24,18 @@
 		051826FB23A2533D004C70C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 051826D223A252C5004C70C8 /* Main.storyboard */; };
 		0518270323A2544B004C70C8 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0518270223A2544B004C70C8 /* EnvironmentManager.swift */; };
 		0518270423A25521004C70C8 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0518270223A2544B004C70C8 /* EnvironmentManager.swift */; };
+		0518270A23A2565F004C70C8 /* GameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0518270923A2565F004C70C8 /* GameResponse.swift */; };
+		0518270B23A2565F004C70C8 /* GameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0518270923A2565F004C70C8 /* GameResponse.swift */; };
+		0518270D23A2577B004C70C8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0518270C23A2577B004C70C8 /* NetworkError.swift */; };
+		0518270E23A2577B004C70C8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0518270C23A2577B004C70C8 /* NetworkError.swift */; };
+		0518272423A258BF004C70C8 /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0518272323A258BF004C70C8 /* NetworkTest.swift */; };
+		05F1B3D523A25BA900BBD859 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F1B3D423A25BA900BBD859 /* Array+Ext.swift */; };
+		05F1B3D623A25BB200BBD859 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F1B3D423A25BA900BBD859 /* Array+Ext.swift */; };
+		05F1B3D823A25BBB00BBD859 /* Optional+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F1B3D723A25BBB00BBD859 /* Optional+Ext.swift */; };
+		05F1B3DA23A25BD400BBD859 /* Optional+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F1B3D723A25BBB00BBD859 /* Optional+Ext.swift */; };
+		05F1B3DD23A25C9100BBD859 /* Games.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518271123A25862004C70C8 /* Games.json */; };
+		05F1B3DE23A25CFF00BBD859 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F1B3D423A25BA900BBD859 /* Array+Ext.swift */; };
+		05F1B3DF23A25CFF00BBD859 /* Optional+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F1B3D723A25BBB00BBD859 /* Optional+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +45,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 051826C823A252C5004C70C8;
 			remoteInfo = GameStudy;
+		};
+		05F1B3DB23A25C5900BBD859 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 051826C123A252C5004C70C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 051826F123A2533D004C70C8;
+			remoteInfo = GameStudyDev;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -52,6 +71,12 @@
 		051826FF23A2533D004C70C8 /* GameStudyDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameStudyDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0518270023A2533D004C70C8 /* GameStudyDev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GameStudyDev-Info.plist"; path = "/Users/eyupkazimgoymen/Desktop/GameStudy/GameStudyDev-Info.plist"; sourceTree = "<absolute>"; };
 		0518270223A2544B004C70C8 /* EnvironmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentManager.swift; sourceTree = "<group>"; };
+		0518270923A2565F004C70C8 /* GameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResponse.swift; sourceTree = "<group>"; };
+		0518270C23A2577B004C70C8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		0518271123A25862004C70C8 /* Games.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Games.json; sourceTree = "<group>"; };
+		0518272323A258BF004C70C8 /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
+		05F1B3D423A25BA900BBD859 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
+		05F1B3D723A25BBB00BBD859 /* Optional+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +129,9 @@
 			children = (
 				051826CC23A252C5004C70C8 /* AppDelegate.swift */,
 				051826CE23A252C5004C70C8 /* SceneDelegate.swift */,
-				0518270123A2542D004C70C8 /* Environment */,
+				0518270523A25637004C70C8 /* Network */,
+				05F1B3D323A25B8D00BBD859 /* Utils */,
+				0518271023A25835004C70C8 /* TestData */,
 				051826D023A252C5004C70C8 /* ViewController.swift */,
 				051826D223A252C5004C70C8 /* Main.storyboard */,
 				051826D823A252C7004C70C8 /* Assets.xcassets */,
@@ -118,6 +145,7 @@
 		051826E523A252C7004C70C8 /* GameStudyTests */ = {
 			isa = PBXGroup;
 			children = (
+				0518272323A258BF004C70C8 /* NetworkTest.swift */,
 				051826E623A252C7004C70C8 /* GameStudyTests.swift */,
 				051826E823A252C7004C70C8 /* Info.plist */,
 			);
@@ -130,6 +158,65 @@
 				0518270223A2544B004C70C8 /* EnvironmentManager.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		0518270523A25637004C70C8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0518270F23A2577F004C70C8 /* Errors */,
+				0518270823A2564B004C70C8 /* Services */,
+				0518270623A25640004C70C8 /* Responses */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0518270623A25640004C70C8 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				0518270923A2565F004C70C8 /* GameResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		0518270823A2564B004C70C8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0518270F23A2577F004C70C8 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				0518270C23A2577B004C70C8 /* NetworkError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		0518271023A25835004C70C8 /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				0518271123A25862004C70C8 /* Games.json */,
+			);
+			path = TestData;
+			sourceTree = "<group>";
+		};
+		05F1B3D323A25B8D00BBD859 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0518270123A2542D004C70C8 /* Environment */,
+				05F1B3D923A25BC600BBD859 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		05F1B3D923A25BC600BBD859 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				05F1B3D423A25BA900BBD859 /* Array+Ext.swift */,
+				05F1B3D723A25BBB00BBD859 /* Optional+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +251,7 @@
 			);
 			dependencies = (
 				051826E423A252C7004C70C8 /* PBXTargetDependency */,
+				05F1B3DC23A25C5900BBD859 /* PBXTargetDependency */,
 			);
 			name = GameStudyTests;
 			productName = GameStudyTests;
@@ -202,7 +290,7 @@
 					};
 					051826E123A252C7004C70C8 = {
 						CreatedOnToolsVersion = 11.2.1;
-						TestTargetID = 051826C823A252C5004C70C8;
+						TestTargetID = 051826F123A2533D004C70C8;
 					};
 				};
 			};
@@ -241,6 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F1B3DD23A25C9100BBD859 /* Games.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,8 +351,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				051826D123A252C5004C70C8 /* ViewController.swift in Sources */,
+				0518270D23A2577B004C70C8 /* NetworkError.swift in Sources */,
 				051826D723A252C5004C70C8 /* GameStudy.xcdatamodeld in Sources */,
+				0518270A23A2565F004C70C8 /* GameResponse.swift in Sources */,
 				051826CD23A252C5004C70C8 /* AppDelegate.swift in Sources */,
+				05F1B3D823A25BBB00BBD859 /* Optional+Ext.swift in Sources */,
+				05F1B3D523A25BA900BBD859 /* Array+Ext.swift in Sources */,
 				051826CF23A252C5004C70C8 /* SceneDelegate.swift in Sources */,
 				0518270323A2544B004C70C8 /* EnvironmentManager.swift in Sources */,
 			);
@@ -273,7 +366,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F1B3DE23A25CFF00BBD859 /* Array+Ext.swift in Sources */,
+				0518272423A258BF004C70C8 /* NetworkTest.swift in Sources */,
 				051826E723A252C7004C70C8 /* GameStudyTests.swift in Sources */,
+				05F1B3DF23A25CFF00BBD859 /* Optional+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,8 +378,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				051826F323A2533D004C70C8 /* ViewController.swift in Sources */,
+				0518270E23A2577B004C70C8 /* NetworkError.swift in Sources */,
 				051826F423A2533D004C70C8 /* GameStudy.xcdatamodeld in Sources */,
+				0518270B23A2565F004C70C8 /* GameResponse.swift in Sources */,
 				0518270423A25521004C70C8 /* EnvironmentManager.swift in Sources */,
+				05F1B3DA23A25BD400BBD859 /* Optional+Ext.swift in Sources */,
+				05F1B3D623A25BB200BBD859 /* Array+Ext.swift in Sources */,
 				051826F523A2533D004C70C8 /* AppDelegate.swift in Sources */,
 				051826F623A2533D004C70C8 /* SceneDelegate.swift in Sources */,
 			);
@@ -296,6 +396,11 @@
 			isa = PBXTargetDependency;
 			target = 051826C823A252C5004C70C8 /* GameStudyProd */;
 			targetProxy = 051826E323A252C7004C70C8 /* PBXContainerItemProxy */;
+		};
+		05F1B3DC23A25C5900BBD859 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 051826F123A2533D004C70C8 /* GameStudyDev */;
+			targetProxy = 05F1B3DB23A25C5900BBD859 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -489,7 +594,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameStudy.app/GameStudy";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameStudyDev.app/GameStudyDev";
 			};
 			name = Debug;
 		};
@@ -511,7 +616,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameStudy.app/GameStudy";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameStudyDev.app/GameStudyDev";
 			};
 			name = Release;
 		};
