@@ -6,7 +6,7 @@
 //  Copyright © 2019 Eyup Kazım Göymen. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 //Belongs to Persistance
 typealias BoolClosure = (Bool) -> ()
@@ -16,3 +16,6 @@ typealias FavouritesClosure = (Result<[Favourites], PersistanceError>) -> ()
 //Belongs to Network
 typealias GameListClosure   = (Result<[Game], NetworkError>) -> ()
 typealias GameDetailClosure = (Result<GameDetailResponse, NetworkError>) -> ()
+
+//Table view
+typealias TableViewProtocols = UITableViewDelegate & UITableViewDataSource
