@@ -26,7 +26,13 @@ final class GameAPIService: GameAPIServiceProtocol {
                         let gamesResponse = try JSONDecoder().decode(GameResponse.self, from: result.data)
                         completion(.success(gamesResponse.games))
                     } catch {
-                        completion(.failure(NetworkError.parseError))
+                        //Might be end of the page, then check if page is valid
+                        do {
+                            let _ = try JSONDecoder().decode(ErrorResponse.self, from: result.data)
+                            completion(.failure(.endOfPages))
+                        } catch {
+                            completion(.failure(NetworkError.parseError))
+                        }
                     }
                 
                 case .failure(_):
@@ -60,7 +66,13 @@ final class GameAPIService: GameAPIServiceProtocol {
                         let gameDetailResponse = try JSONDecoder().decode(GameDetailResponse.self, from: result.data)
                         completion(.success(gameDetailResponse))
                     } catch {
-                        completion(.failure(NetworkError.parseError))
+                        //Might be end of the page, then check if page is valid
+                        do {
+                            let _ = try JSONDecoder().decode(ErrorResponse.self, from: result.data)
+                            completion(.failure(.endOfPages))
+                        } catch {
+                            completion(.failure(NetworkError.parseError))
+                        }
                     }
                 
                 case .failure(_):

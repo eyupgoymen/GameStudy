@@ -92,6 +92,8 @@ final class PersistanceService: PersistanceServiceProtocol {
         else {
             newFavouriteEntity.metacritic = -1
         }
+        
+        
        
         do {
             try context.save()

@@ -11,11 +11,11 @@ import UIKit
 //Belongs to Persistance
 typealias BoolClosure = (Bool) -> ()
 typealias PersistanceErrorClosure = (PersistanceError?) -> ()
-typealias FavouritesClosure = (Result<[Favourites], PersistanceError>) -> ()
+typealias FavouritesClosure = (Swift.Result<[Favourites], PersistanceError>) -> ()
 
 //Belongs to Network
-typealias GameListClosure   = (Result<[Game], NetworkError>) -> ()
-typealias GameDetailClosure = (Result<GameDetailResponse, NetworkError>) -> ()
+typealias GameListClosure   = (Swift.Result<[Game], NetworkError>) -> ()
+typealias GameDetailClosure = (Swift.Result<GameDetailResponse, NetworkError>) -> ()
 
 //Table view
 typealias TableViewProtocols = UITableViewDelegate & UITableViewDataSource
