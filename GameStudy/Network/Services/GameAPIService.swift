@@ -8,13 +8,13 @@
 
 import Moya
 
-typealias GameListResults      = (Result<[Game], NetworkError>) -> ()
-typealias GameDetailResult = (Result<GameDetailResponse, NetworkError>) -> ()
+typealias GameListClosure      = (Result<[Game], NetworkError>) -> ()
+typealias GameDetailClosure = (Result<GameDetailResponse, NetworkError>) -> ()
 
 protocol GameAPIServiceProtocol {
-    func fetchGames(with pageNumber: Int, completion: @escaping GameListResults)
-    func searchGame(with pageNumber: Int, keyword: String, completion: @escaping GameListResults)
-    func fetchDetail(with gameId: Int, completion: @escaping GameDetailResult)
+    func fetchGames(with pageNumber: Int, completion: @escaping GameListClosure)
+    func searchGame(with pageNumber: Int, keyword: String, completion: @escaping GameListClosure)
+    func fetchDetail(with gameId: Int, completion: @escaping GameDetailClosure)
 }
 
 final class GameAPIService: GameAPIServiceProtocol {
@@ -38,7 +38,7 @@ final class GameAPIService: GameAPIServiceProtocol {
         }
     }
     
-    func searchGame(with pageNumber: Int, keyword: String, completion: @escaping GameListResults) {
+    func searchGame(with pageNumber: Int, keyword: String, completion: @escaping GameListClosure) {
         apiProvider.request(.searchGames(pageNumber: pageNumber, keyword: keyword)) { (response) in
             switch response {
                 case .success(let result):
@@ -55,7 +55,7 @@ final class GameAPIService: GameAPIServiceProtocol {
         }
     }
     
-    func fetchDetail(with gameId: Int, completion: @escaping GameDetailResult) {
+    func fetchDetail(with gameId: Int, completion: @escaping GameDetailClosure) {
         apiProvider.request(.fetchDetail(gameId: gameId)) { (response) in
             switch response {
                 case .success(let result):
