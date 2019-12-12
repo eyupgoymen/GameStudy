@@ -28,7 +28,7 @@ class NetworkTests: XCTestCase {
         
         XCTAssertEqual(gameDetailResponse.name, "Grand Theft Auto V")
         XCTAssertEqual(gameDetailResponse.id, 3498)
-        XCTAssertEqual(gameDetailResponse.redditUrl, URL(string: "https://www.reddit.com/r/GrandTheftAutoV/d"))
+        XCTAssertEqual(gameDetailResponse.redditUrl, "https://www.reddit.com/r/GrandTheftAutoV/d")
     }
 
     func getDataFromBundle(fileName: String, ext: String) throws -> Data {
