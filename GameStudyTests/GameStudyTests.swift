@@ -19,6 +19,16 @@ class GameStudyTests: XCTestCase {
         XCTAssertEqual(gameResponse.games.first?.id, 3498)
         XCTAssertEqual(gameResponse.games[4].id, 12020)
         XCTAssertEqual(gameResponse.games[3].name, "The Elder Scrolls V: Skyrim")
+        XCTAssertEqual(gameResponse.games[1].metacritic, 95)
+    }
+    
+    func testGameDetailParse() throws {
+        let data = try getDataFromBundle(fileName: "GameDetail", ext: "json")
+        let gameDetailResponse = try JSONDecoder().decode(GameDetailResponse.self, from: data)
+        
+        XCTAssertEqual(gameDetailResponse.name, "Grand Theft Auto V")
+        XCTAssertEqual(gameDetailResponse.id, 3498)
+        XCTAssertEqual(gameDetailResponse.redditUrl, URL(string: "https://www.reddit.com/r/GrandTheftAutoV/d"))
     }
 
     func getDataFromBundle(fileName: String, ext: String) throws -> Data {

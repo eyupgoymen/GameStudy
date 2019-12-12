@@ -19,12 +19,12 @@ struct GameResponse: Decodable {
 struct Game: Decodable {
     let id: Int
     let name: String
-    let rating: Double
-    let backgroundImageUrl: String
+    let metacritic: Int?
+    let backgroundImageUrl: URL
     let genres: [Genre]
     
     enum CodingKeys: String, CodingKey {
-        case id, name, rating, genres
+        case id, name, metacritic, genres
         case backgroundImageUrl = "background_image"
     }
     
