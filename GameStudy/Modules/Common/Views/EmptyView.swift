@@ -33,7 +33,7 @@ final class EmptyView: LayoutableView {
     func setupLayout() {
         emptyStateLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(120)
+            $0.top.equalTo(48)
         }
     }
 }

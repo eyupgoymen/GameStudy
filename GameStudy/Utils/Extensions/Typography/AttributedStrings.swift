@@ -32,4 +32,14 @@ extension String {
         
         return attributedText
     }
+    
+    func descriptionLabelAttributedString() -> NSAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.84
+        
+        let attributedText = NSMutableAttributedString(string: self, attributes: [
+            NSAttributedString.Key.kern: -0.41,
+            NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        return attributedText
+    }
 }

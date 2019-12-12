@@ -35,7 +35,12 @@ final class GameListViewController: LayoutingViewController {
         setDelegates()
         setupNavigationBar()
         viewModel.fetchGames()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func setDelegates() {
@@ -52,6 +57,9 @@ final class GameListViewController: LayoutingViewController {
         navigationItem.searchController = layoutableView.searchController
         layoutableView.searchController.searchResultsUpdater = self
         layoutableView.searchController.searchBar.delegate = self
+        
+        //Set tabbar when pushed
+        hidesBottomBarWhenPushed = true
     }
 }
 
@@ -74,13 +82,17 @@ extension GameListViewController: GameListViewModelDelegate {
             case .searchedGamesFetched:
                 DispatchQueue.main.async {
                     self.layoutableView.tableView.reloadData()
-                }
+            }
         }
     }
     
     //TODO: implement routing
     func handleRouting(_ route: GameListRoute) {
-        
+        switch route {
+            case .gameDetail(let game):
+                let detailModule = GameDetailBuilder.create(game: game)
+                navigationController?.pushViewController(detailModule, animated: true)
+            }
     }
 }
 
@@ -98,6 +110,18 @@ extension GameListViewController: TableViewProtocols {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 136
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        //Do not allow to press empty cells
+        if viewModel.isSearchingGame, row < viewModel.searchedGames.count {
+            viewModel.navigateToGameDetail(at: row)
+        }
+            
+        else if !viewModel.isSearchingGame, row < viewModel.games.count{
+            viewModel.navigateToGameDetail(at: row)
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

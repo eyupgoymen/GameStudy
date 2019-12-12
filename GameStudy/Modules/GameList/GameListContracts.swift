@@ -33,5 +33,5 @@ enum GameListViewModelOutput {
 }
 
 enum GameListRoute {
-    case GameDetail(game: Game)
+    case gameDetail(game: Game)
 }

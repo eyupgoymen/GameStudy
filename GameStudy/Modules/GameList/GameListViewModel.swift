@@ -78,7 +78,7 @@ final class GameListViewModel: GameListViewModelProtocol {
     }
     
     func navigateToGameDetail(at index: Int) {
-        delegate?.handleRouting(.GameDetail(game: searchedGames.count == 0 ? games[index] : searchedGames[index]))
+        delegate?.handleRouting(.gameDetail(game: searchedGames.count == 0 ? games[index] : searchedGames[index]))
     }
     
     func notifyController(_ output: GameListViewModelOutput) {

@@ -9,12 +9,10 @@
 import Foundation
 import CoreData
 
-
-
 protocol PersistanceServiceProtocol {
     func fetchFavourites(completion: @escaping FavouritesClosure)
     func checkIfGameIsInFavourites(id: Int, completion: @escaping BoolClosure)
-    func deleteFavourite(with id: Int, completion: @escaping PersistanceErrorClosure)
+    func deleteFavourite(gameId: Int, completion: @escaping PersistanceErrorClosure)
     func addFavourite(gameDetail: GameDetailResponse, game: Game,completion:  @escaping PersistanceErrorClosure)
 }
 
@@ -63,9 +61,9 @@ final class PersistanceService: PersistanceServiceProtocol {
     }
     
     /// Removes from favourites
-    func deleteFavourite(with id: Int, completion: @escaping PersistanceErrorClosure) {
+    func deleteFavourite(gameId: Int, completion: @escaping PersistanceErrorClosure) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.favourites.rawValue)
-        fetchRequest.predicate = NSPredicate(format: "id = %@", String(id))
+        fetchRequest.predicate = NSPredicate(format: "id = %@", String(gameId))
         let request = NSBatchDeleteRequest(fetchRequest: fetchRequest )
         
         do {

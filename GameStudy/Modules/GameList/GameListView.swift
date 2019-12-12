@@ -16,6 +16,7 @@ final class GameListView: LayoutableView {
         let tableView = UITableView()
         tableView.register(GameCell.self)
         tableView.rowHeight = 136
+        tableView.allowsMultipleSelection = true
         return tableView
     }()
     
@@ -47,8 +48,10 @@ final class GameListView: LayoutableView {
     
     func setupLayout() {
         tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(self.safeAreaLayoutGuide.snp.topMargin)
+            $0.bottomMargin.equalTo(self.safeAreaLayoutGuide.snp.bottomMargin)
+         }
     }
     
     func setLoadingState(isLoading: Bool) {

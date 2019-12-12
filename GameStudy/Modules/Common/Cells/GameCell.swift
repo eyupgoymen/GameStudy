@@ -49,6 +49,10 @@ final class GameCell: TableViewCell<Game> {
         return stackView
     }()
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        backgroundColor = selected == true ? UIColor(hexString: "E0E0E0") : .clear
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         gameImageView.image = nil
