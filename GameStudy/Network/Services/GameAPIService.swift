@@ -8,20 +8,17 @@
 
 import Moya
 
-typealias GameListClosure      = (Result<[Game], NetworkError>) -> ()
-typealias GameDetailClosure = (Result<GameDetailResponse, NetworkError>) -> ()
-
 protocol GameAPIServiceProtocol {
-    func fetchGames(with pageNumber: Int, completion: @escaping GameListClosure)
-    func searchGame(with pageNumber: Int, keyword: String, completion: @escaping GameListClosure)
-    func fetchDetail(with gameId: Int, completion: @escaping GameDetailClosure)
+    func fetchGames(pageNumber: Int, completion: @escaping GameListClosure)
+    func searchGame(pageNumber: Int, keyword: String, completion: @escaping GameListClosure)
+    func fetchDetail(gameId: Int, completion: @escaping GameDetailClosure)
 }
 
 final class GameAPIService: GameAPIServiceProtocol {
     
     private let apiProvider = MoyaProvider<GameAPI>()
     
-    func fetchGames(with pageNumber: Int, completion: @escaping (Result<[Game], NetworkError>) -> ()) {
+    func fetchGames(pageNumber: Int, completion: @escaping (Result<[Game], NetworkError>) -> ()) {
         apiProvider.request(.fetchGames(pageNumber: pageNumber)) { (response) in
             switch response {
                 case .success(let result):
@@ -38,7 +35,7 @@ final class GameAPIService: GameAPIServiceProtocol {
         }
     }
     
-    func searchGame(with pageNumber: Int, keyword: String, completion: @escaping GameListClosure) {
+    func searchGame(pageNumber: Int, keyword: String, completion: @escaping GameListClosure) {
         apiProvider.request(.searchGames(pageNumber: pageNumber, keyword: keyword)) { (response) in
             switch response {
                 case .success(let result):
@@ -55,7 +52,7 @@ final class GameAPIService: GameAPIServiceProtocol {
         }
     }
     
-    func fetchDetail(with gameId: Int, completion: @escaping GameDetailClosure) {
+    func fetchDetail(gameId: Int, completion: @escaping GameDetailClosure) {
         apiProvider.request(.fetchDetail(gameId: gameId)) { (response) in
             switch response {
                 case .success(let result):

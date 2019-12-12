@@ -9,9 +9,7 @@
 import Foundation
 import CoreData
 
-typealias BoolClosure = (Bool) -> ()
-typealias PersistanceErrorClosure = (PersistanceError?) -> ()
-typealias FavouritesClosure = (Result<[Favourites], PersistanceError>) -> ()
+
 
 protocol PersistanceServiceProtocol {
     func fetchFavourites(completion: @escaping FavouritesClosure)
@@ -83,15 +81,18 @@ final class PersistanceService: PersistanceServiceProtocol {
     func addFavourite(gameDetail: GameDetailResponse, game: Game,completion:  @escaping PersistanceErrorClosure) {
         let newFavouriteEntity = Favourites(context: self.context)
         newFavouriteEntity.name = gameDetail.name
-        newFavouriteEntity.backgroundImage = gameDetail.backgroundImage.absoluteString
+        newFavouriteEntity.backgroundImage = gameDetail.backgroundImage?.absoluteString
         newFavouriteEntity.id = Int32(gameDetail.id)
         newFavouriteEntity.genres = game.genres.map { $0.name }.joined(separator: ", ")
         
-        // metacritic might be nil
+        // If metracritic is nil, set it as -1. Bad code!
         if let metacritic = game.metacritic {
             newFavouriteEntity.metacritic = Int32(metacritic)
         }
-        
+        else {
+            newFavouriteEntity.metacritic = -1
+        }
+       
         do {
             try context.save()
             completion(nil)

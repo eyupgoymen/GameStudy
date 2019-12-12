@@ -1,5 +1,5 @@
 //
-//  GameStudyTests.swift
+//  NetworkTests.swift
 //  GameStudyTests
 //
 //  Created by Eyup Kazım Göymen on 12.12.2019.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import GameStudyDev
 
-class GameStudyTests: XCTestCase {
+class NetworkTests: XCTestCase {
 
     func testGameParse() throws {
         let data = try getDataFromBundle(fileName: "Games", ext: "json")
@@ -32,8 +32,9 @@ class GameStudyTests: XCTestCase {
     }
 
     func getDataFromBundle(fileName: String, ext: String) throws -> Data {
-        let bundle = Bundle(for: GameStudyTests.self)
+        let bundle = Bundle(for: GameStudyTests.NetworkTests.self)
         let url = try bundle.url(forResource: fileName, withExtension: ext).unwrap()
         return try Data(contentsOf: url)
     }
+
 }

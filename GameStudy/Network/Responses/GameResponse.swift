@@ -20,7 +20,7 @@ struct Game: Decodable {
     let id: Int
     let name: String
     let metacritic: Int?
-    let backgroundImageUrl: URL
+    let backgroundImageUrl: URL?
     let genres: [Genre]
     
     enum CodingKeys: String, CodingKey {
