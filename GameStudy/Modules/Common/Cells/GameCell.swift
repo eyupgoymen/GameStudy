@@ -63,6 +63,7 @@ final class GameCell: TableViewCell<Game> {
     }
     
     override func setupViews() {
+        contentView.backgroundColor = .white
         gameMetaDataStackView.addArrangedSubviews(metacriticLabel, genresLabel)
         add(gameImageView, gameNameLabel, gameMetaDataStackView)
     }

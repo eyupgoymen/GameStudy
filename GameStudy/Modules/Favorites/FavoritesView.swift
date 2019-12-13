@@ -15,6 +15,7 @@ final class FavoritesView: LayoutableView {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(GameCell.self)
+        tableView.backgroundColor = UIColor(hexString: "E5E5E5")
         return tableView
     }()
     
@@ -60,6 +61,7 @@ final class FavoritesView: LayoutableView {
         else {
             self.tableView.backgroundView = nil
             self.tableView.separatorStyle = .singleLine
+            self.tableView.tableFooterView = UIView()
             self.tableView.reloadData()
         }
     }

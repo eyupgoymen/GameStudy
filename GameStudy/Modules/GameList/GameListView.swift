@@ -17,6 +17,7 @@ final class GameListView: LayoutableView {
         tableView.register(GameCell.self)
         tableView.rowHeight = 136
         tableView.allowsMultipleSelection = true
+        tableView.backgroundColor = UIColor(hexString: "E5E5E5")
         return tableView
     }()
     
@@ -71,6 +72,7 @@ final class GameListView: LayoutableView {
         else {
             self.tableView.backgroundView = nil
             self.tableView.separatorStyle = .singleLine
+            self.tableView.tableFooterView = UIView()
             self.tableView.reloadData()
         }
     }

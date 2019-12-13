@@ -62,8 +62,9 @@ extension FavoritesViewController: FavoritesViewModelDelegate {
                 alert(message: error.localizedDescription)
                 
             case .gamesFetched:
-                //Update background view of table view for empty case
+                //Update background view of table view for empty case, also update page title
                 layoutableView.tableViewEmptyState(isEmpty: viewModel.games.count == 0 ? true : false)
+                navigationItem.title = viewModel.games.count == 0 ? "Favorites" : "Favorites (\(viewModel.games.count))"
                 
                 DispatchQueue.main.async {
                     self.layoutableView.tableView.reloadData()
