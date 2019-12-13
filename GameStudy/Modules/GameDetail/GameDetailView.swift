@@ -37,6 +37,12 @@ final class GameDetailView: LayoutableView {
         return stretchyHeaderView
     }()
     
+    let favoriteBarButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem(title: "Favorite", style: .plain, target: nil, action: nil)
+        barButton.isEnabled = false
+        return barButton
+    }()
+    
     func setupViews() {
         backgroundColor = .white
         add(tableView)
@@ -52,5 +58,10 @@ final class GameDetailView: LayoutableView {
     
     func setLoadingState(isLoading: Bool) {
         self.tableView.tableFooterView?.isHidden = !isLoading
+    }
+    
+    func updateBarButtonConsideringFavoriteStatus(isInFavourites: Bool) {
+        favoriteBarButton.isEnabled = true
+        favoriteBarButton.title = isInFavourites == true ? "Favorite" : "Add Favorites"
     }
 }

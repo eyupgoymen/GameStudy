@@ -46,6 +46,7 @@ final class GameDetailViewController: LayoutingViewController {
         setDelegates()
         setupNavigationBar()
         viewModel.fetchGameDetail()
+        viewModel.checkIfGameFavorited()
     }
     
     private func setDelegates() {
@@ -55,6 +56,15 @@ final class GameDetailViewController: LayoutingViewController {
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = false
+        
+        //Setup bar button
+        layoutableView.favoriteBarButton.target = self
+        layoutableView.favoriteBarButton.action = #selector(favoriteBarButtonPressed)
+        navigationItem.rightBarButtonItem = layoutableView.favoriteBarButton
+    }
+    
+    @objc func favoriteBarButtonPressed() {
+        viewModel.isInFavourites == true ? viewModel.removeFavorite() : viewModel.addFavorite()
     }
 }
 
@@ -70,11 +80,12 @@ extension GameDetailViewController: GameDetailViewModelDelegate {
             case .detailFetched(let gameDetail):
                 DispatchQueue.main.async {
                     self.layoutableView.tableView.reloadData()
+                    self.layoutableView.tableView.tableFooterView = UIView()
                 }
                 layoutableView.stretchyHeaderView.updateHeader(detail: gameDetail)
                
             case .favouriteStatusChanged:
-                print("Hi")
+                layoutableView.updateBarButtonConsideringFavoriteStatus(isInFavourites: viewModel.isInFavourites)
         }
     }
     

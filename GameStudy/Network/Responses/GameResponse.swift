@@ -27,7 +27,6 @@ struct Game: Decodable {
         case id, name, metacritic, genres
         case backgroundImageUrl = "background_image"
     }
-    
 }
 
 struct Genre: Decodable {
