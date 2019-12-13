@@ -29,8 +29,8 @@ final class FavoritesViewModel: FavoritesViewModelProtocol {
             self.notifyController(.loading(false))
             
             switch result {
-                case .success(let favourites):
-                    self.games = favourites.map { Game(favorite: $0) } // map favourite into games
+                case .success(let games):
+                    self.games = games 
                     self.notifyController(.gamesFetched)
                 
                 case .failure(let error):

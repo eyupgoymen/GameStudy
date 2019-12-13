@@ -39,7 +39,8 @@ final class PersistanceService: PersistanceServiceProtocol {
                 completion(.failure(.couldntFetchFavourites))
                 return
             }
-            completion(.success(favourites))
+            let games = favourites.map{ Game(favorite: $0)}
+            completion(.success(games))
         }
         catch {
             return completion(.failure(.couldntFetchFavourites))

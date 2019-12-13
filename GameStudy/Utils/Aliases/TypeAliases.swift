@@ -11,7 +11,7 @@ import UIKit
 //Belongs to Persistance
 typealias BoolClosure = (Bool) -> ()
 typealias PersistanceErrorClosure = (PersistanceError?) -> ()
-typealias FavouritesClosure = (Swift.Result<[Favourites], PersistanceError>) -> ()
+typealias FavouritesClosure = (Swift.Result<[Game], PersistanceError>) -> ()
 
 //Belongs to Network
 typealias GameListClosure   = (Swift.Result<[Game], NetworkError>) -> ()

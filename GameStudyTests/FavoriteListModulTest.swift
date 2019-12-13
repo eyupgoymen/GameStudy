@@ -39,7 +39,7 @@ class FavoriteListModulTest: XCTestCase {
         let data = try getDataFromBundle(fileName: "Games", ext: "json")
         let gameResponse = try JSONDecoder().decode(GameResponse.self, from: data)
         
-        persistanceService.favourites = gameResponse.games.map { Favourites(game: $0) }
+        persistanceService.games = gameResponse.games
         viewModel.fetchGames()
         
         //We have three states
@@ -76,14 +76,14 @@ private final class MockView: FavoritesViewModelDelegate {
 
 private final class MockPersistanceService: PersistanceServiceProtocol {
     
-    var favourites: [Favourites] = []
+    var games: [Game] = []
     
     func deleteFavourite(gameId: Int, completion: @escaping PersistanceErrorClosure) {
         completion(nil)
     }
     
     func fetchFavourites(completion: @escaping FavouritesClosure) {
-        completion(.success(favourites))
+        completion(.success(games))
     }
     
     func checkIfGameIsInFavourites(id: Int, completion: @escaping BoolClosure) { }
