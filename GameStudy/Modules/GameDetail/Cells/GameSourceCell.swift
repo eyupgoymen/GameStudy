@@ -24,6 +24,7 @@ final class GameSourceCell: TableViewCell<String> {
     }
     
     override func setupViews() {
+        selectionStyle = .none
         add(sourceTitle)
     }
     

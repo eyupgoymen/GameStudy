@@ -39,8 +39,13 @@ final class GameListViewController: LayoutingViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
+        hidesBottomBarWhenPushed = true
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.hidesBottomBarWhenPushed = false
     }
     
     private func setDelegates() {
@@ -57,9 +62,6 @@ final class GameListViewController: LayoutingViewController {
         navigationItem.searchController = layoutableView.searchController
         layoutableView.searchController.searchResultsUpdater = self
         layoutableView.searchController.searchBar.delegate = self
-        
-        //Set tabbar when pushed
-        hidesBottomBarWhenPushed = true
     }
 }
 

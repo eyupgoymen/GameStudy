@@ -80,6 +80,23 @@ final class GameDetailViewModel: GameDetailViewModelProtocol {
         }
     }
     
+    func didSelectCell(at index: Int) {
+        switch DetailCellSections(section: index) {
+            case .reddit:
+                if let redditUrl = gameDetail?.redditUrl, redditUrl != "" {
+                    delegate?.handleRouting(.reddit(redditUrl))
+                }
+            
+            case .website:
+                if let websiteUrl = gameDetail?.redditUrl, websiteUrl != "" {
+                    delegate?.handleRouting(.website(websiteUrl))
+                }
+            
+            default:
+                break
+        }
+    }
+    
     func notifyController(_ output: GameDetailViewModelOutput) {
         delegate?.handleViewModelOutput(output)
     }

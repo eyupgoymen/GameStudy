@@ -40,6 +40,7 @@ final class GameDescriptionCell: TableViewCell<String> {
     }
     
     override func setupViews() {
+        selectionStyle = .none
         descriptionStackView.addArrangedSubviews(titleLabel, descriptionLabel)
         add(descriptionStackView)
     }

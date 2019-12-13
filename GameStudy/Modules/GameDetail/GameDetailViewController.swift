@@ -23,18 +23,7 @@ final class GameDetailViewController: LayoutingViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //Cell sections
-    @objc enum DetailCellSections: Int {
-        case description = 0
-        case reddit
-        case website
-        
-        init?(section: Int){
-            self.init(rawValue: section)
-        }
-    }
-    
+ 
     override func loadView() {
         super.loadView()
         view = ViewType.create()
@@ -48,7 +37,7 @@ final class GameDetailViewController: LayoutingViewController {
         viewModel.fetchGameDetail()
         viewModel.checkIfGameFavorited()
     }
-    
+ 
     private func setDelegates() {
         layoutableView.tableView.delegate = self
         layoutableView.tableView.dataSource = self
@@ -91,11 +80,13 @@ extension GameDetailViewController: GameDetailViewModelDelegate {
     
     func handleRouting(_ route: GameDetailRoute) {
         switch route {
-            case .reddit:
-                print("Hi")
+            case .reddit(let url):
+                guard let url = URL(string: url) else { return }
+                UIApplication.shared.open(url)
             
-            case .website:
-                print("Hi")
+            case .website(let url):
+                guard let url = URL(string: url) else { return }
+                UIApplication.shared.open(url)
         }
     }
 }
@@ -125,6 +116,10 @@ extension GameDetailViewController: TableViewProtocols {
             default:
                 fatalError("Unexpected cell index")
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectCell(at: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

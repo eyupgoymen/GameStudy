@@ -138,7 +138,7 @@ private final class MockPersistanceService: PersistanceServiceProtocol {
     }
     
     func deleteFavourite(gameId: Int, completion: @escaping PersistanceErrorClosure) {
-        if let index = favourites.index(of: gameId) {
+        if let index = favourites.firstIndex(of: gameId) {
             favourites.remove(at: index)
         }
         completion(nil)

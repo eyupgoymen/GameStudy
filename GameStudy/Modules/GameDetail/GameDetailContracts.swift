@@ -16,6 +16,7 @@ protocol GameDetailViewModelProtocol {
     func checkIfGameFavorited()
     func addFavorite()
     func removeFavorite()
+    func didSelectCell(at index: Int)
 }
 
 protocol GameDetailViewModelDelegate: class {
@@ -31,5 +32,17 @@ enum GameDetailViewModelOutput {
 }
 
 enum GameDetailRoute {
-    case reddit, website
+    case reddit(String)
+    case website(String)
+}
+
+//Cell sections
+@objc enum DetailCellSections: Int {
+    case description = 0
+    case reddit
+    case website
+    
+    init?(section: Int){
+        self.init(rawValue: section)
+    }
 }

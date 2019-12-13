@@ -17,7 +17,7 @@ struct GameResponse: Decodable {
 }
 
 struct Game: Decodable {
-    let id: Int
+    var id: Int
     let name: String
     let metacritic: Int?
     let backgroundImageUrl: URL?

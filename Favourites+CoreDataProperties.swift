@@ -22,5 +22,4 @@ extension Favourites {
     @NSManaged public var metacritic: Int32
     @NSManaged public var name: String?
     @NSManaged public var genres: String?
-
 }

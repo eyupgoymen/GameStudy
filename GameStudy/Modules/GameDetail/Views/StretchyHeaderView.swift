@@ -15,7 +15,6 @@ final class StretchyHeaderView: LayoutableView {
     private let gameImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "unavailable")
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -65,6 +64,9 @@ final class StretchyHeaderView: LayoutableView {
         //Set image
         if let imageURL = detail.backgroundImage {
             gameImageView.kf.setImage(with: imageURL)
+        }
+        else {
+            gameImageView.image = UIImage(named: "unavailable")
         }
         
         //Set name

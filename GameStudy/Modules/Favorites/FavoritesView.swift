@@ -1,23 +1,20 @@
 //
-//  GameDetailView.swift
+//  FavoritesView.swift
 //  GameStudy
 //
-//  Created Eyup Kazım Göymen on 12.12.2019.
+//  Created Eyup Kazım Göymen on 13.12.2019.
 //  Copyright © 2019 Eyup Kazım Göymen. All rights reserved.
 //
 
 import UIKit
 import SnapKit
 
-final class GameDetailView: LayoutableView {
+final class FavoritesView: LayoutableView {
     
     //UI Objects
     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.allowsSelection = true
-        tableView.contentInset = UIEdgeInsets(top: 291, left: 0, bottom: 0, right: 0)
-        tableView.register(GameDescriptionCell.self)
-        tableView.register(GameSourceCell.self)
+        tableView.register(GameCell.self)
         return tableView
     }()
     
@@ -29,17 +26,10 @@ final class GameDetailView: LayoutableView {
         return spinner
     }()
     
-    lazy var stretchyHeaderView: StretchyHeaderView = {
-        let stretchyHeaderView = StretchyHeaderView.create()
-        stretchyHeaderView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 291)
-        tableView.addSubview(stretchyHeaderView)
-        return stretchyHeaderView
-    }()
-    
-    let favoriteBarButton: UIBarButtonItem = {
-        let barButton = UIBarButtonItem(title: "Favorite", style: .plain, target: nil, action: nil)
-        barButton.isEnabled = false
-        return barButton
+    let emptyStateView: EmptyView = {
+        let emptyView = EmptyView.create()
+        emptyView.stateMessage = "There is no favorite found."
+        return emptyView
     }()
     
     func setupViews() {
@@ -59,8 +49,24 @@ final class GameDetailView: LayoutableView {
         self.tableView.tableFooterView?.isHidden = !isLoading
     }
     
-    func updateBarButtonConsideringFavoriteStatus(isInFavourites: Bool) {
-        favoriteBarButton.isEnabled = true
-        favoriteBarButton.title = isInFavourites == true ? "Favorite" : "Add Favorites"
+    func tableViewEmptyState(isEmpty: Bool) {
+        if isEmpty {
+            tableView.beginUpdates()
+            self.tableView.backgroundView = self.emptyStateView
+            self.tableView.separatorStyle = .none
+            self.emptyStateView.center = self.tableView.center
+            tableView.endUpdates()
+        }
+        else {
+            self.tableView.backgroundView = nil
+            self.tableView.separatorStyle = .singleLine
+            self.tableView.reloadData()
+        }
+    }
+    
+    func removeFavoriteCell(at index: Int) {
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+        tableView.endUpdates()
     }
 }

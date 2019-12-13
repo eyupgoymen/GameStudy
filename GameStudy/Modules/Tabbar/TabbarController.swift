@@ -25,7 +25,11 @@ final class TabbarController: UITabBarController {
         let gameListVC = GameListBuilder.create()
         gameListVC.tabBarItem.image = UIImage(named: "tabbar_games")
         gameListVC.tabBarItem.title = "Games"
+        
+        let favoritesVC = FavoritesBuilder.create()
+        favoritesVC.tabBarItem.image = UIImage(named: "tabbar_favorite")
+        favoritesVC.tabBarItem.title = "Favorites"
                 
-        viewControllers = [UINavigationController(rootViewController: gameListVC)]
+        viewControllers = [UINavigationController(rootViewController: gameListVC), UINavigationController(rootViewController: favoritesVC)]
     }
 }

@@ -27,6 +27,7 @@ final class EmptyView: LayoutableView {
     }
     
     func setupViews() {
+        backgroundColor = UIColor(hexString: "E5E5E5")
         add(emptyStateLabel)
     }
     
